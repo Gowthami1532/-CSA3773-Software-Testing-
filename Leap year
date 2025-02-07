@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Enter the date/month/year:");
+
+        Scanner s = new Scanner(System.in);
+        String re = s.next();
+        
+        // Splitting input by "/" and extracting the year
+        String[] r = re.split("/", 3);
+        
+        try {
+            int year = Integer.parseInt(r[2]); // Convert year to integer
+
+            // Leap year check
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                System.out.println(year + " is a leap year.");
+            } else {
+                System.out.println(year + " is not a leap year.");
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input! Please enter date in dd/mm/yyyy format.");
+        }
+
+        s.close(); // Close scanner to prevent resource leak
+    }
+}
